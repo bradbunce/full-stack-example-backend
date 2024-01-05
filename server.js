@@ -13,7 +13,7 @@ var LaunchDarkly = require('@launchdarkly/node-server-sdk');
 const sdkKey = process.env.LD_SDK_KEY;
 console.log(`LaunchDarkly SDK Key: ${sdkKey}`);
 
-const featureFlagKey = "boolean-test-flag-1";
+const featureFlagKey = "your-flag-key";
 
 function showMessage(s) {
     console.log("*** " + s);
@@ -90,7 +90,7 @@ app.post('/fact', addFact);
 let http = require('http');
 
 let urlparams = {
-    host: '192.168.2.100',
+    host: 'hostname or ip address of this server',
     port: PORT,
     path: '/fact',
     method: 'POST',
