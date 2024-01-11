@@ -53,7 +53,7 @@ function eventsHandler(request, response, next) {
     };
     response.writeHead(200, headers);
 
-    const data = `data: ${JSON.stringify(facts)}\n\n`;
+    const data = `data: ${JSON.stringify(logos)}\n\n`;
 
     response.write(data);
 
@@ -74,25 +74,25 @@ function eventsHandler(request, response, next) {
 
 app.get('/events', eventsHandler);
 
-function sendEventsToAll(newFact) {
-    clients.forEach(client => client.response.write(`data: ${JSON.stringify(newFact)}\n\n`))
+function sendEventsToAll(newLogo) {
+    clients.forEach(client => client.response.write(`data: ${JSON.stringify(newLogo)}\n\n`))
 }
 
-async function addFact(request, respsonse, next) {
-    const newFact = request.body;
-    facts = newFact;
-    respsonse.json(newFact)
-    return sendEventsToAll(newFact);
+async function addLogo(request, respsonse, next) {
+    const newLogo = request.body;
+    logos = newLogo;
+    respsonse.json(newLogo)
+    return sendEventsToAll(newLogo);
 }
 
-app.post('/fact', addFact);
+app.post('/logo', addLogo);
 
 let http = require('http');
 
 let urlparams = {
     host: 'hostname or ip address of this server',
     port: PORT,
-    path: '/fact',
+    path: '/logo',
     method: 'POST',
     headers: {
         'Content-Type': 'application/json', 
